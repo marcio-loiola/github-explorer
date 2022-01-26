@@ -24,4 +24,6 @@ export function RepositoryList () {
             </ul>
         </section>
     )
+
+    const b = 2; 
 }  
