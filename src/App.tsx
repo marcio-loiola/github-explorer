@@ -1,8 +1,6 @@
-// src/App.tsx
-
 import { RepositoryList } from './components/RepositoryList';
+import './styles/global.scss';
 
-import './styles/App.scss';
 
 export function App() {
   return (

@@ -16,10 +16,8 @@ export function RepositoryList() {
   /* const [userName, SetUserName] = useState('willianspraciano'); 
       Aqui era quando se explorava os repositórios de um usuário específico pelo seu username
   */
-
   // Consumir API -> Efeito que é disparado quando a interface for montada
   useEffect(()=>{
-      
     const fetchData = async () => {
       const response = await api.get('https://api.github.com/orgs/rocketseat/repos')
       setRepositories
