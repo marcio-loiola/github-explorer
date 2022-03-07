@@ -1,9 +1,6 @@
-// src/components/RepositoryList.tsx
-
 import React, { useState, useEffect } from 'react';
-
 import { RepositoryItem } from './RepositoryItem';
-
+import api from '../_config/api'
 import '../styles/repositories.scss'; 
 
 type Repository = {
@@ -16,14 +13,20 @@ export function RepositoryList() {
   // Estado porque vai mudar
   const [repositories, setRepositories] = useState<Repository[]>([]); // inicialmente vazio
 
-  const [userName, SetUserName] = useState('willianspraciano');
+  /* const [userName, SetUserName] = useState('willianspraciano'); 
+      Aqui era quando se explorava os repositórios de um usuário específico pelo seu username
+  */
 
   // Consumir API -> Efeito que é disparado quando a interface for montada
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${userName}/repos`)
-      .then((response) => response.json()) //converte para json
-      .then((data) => setRepositories(data));
-  }, []);
+  useEffect(()=>{
+      
+    const fetchData = async () => {
+      const response = await api.get('https://api.github.com/orgs/rocketseat/repos')
+      setRepositories
+      (response?.data);
+    }
+    fetchData();
+  },[]);
 
   return (
     <section className="repositoryList">
